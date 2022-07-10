@@ -1,0 +1,29 @@
+{% extends 'links/base.html' %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-8 col-lg-4 offset-2 offset-lg-4">
+            <div class="text-center mt-5 b-1">
+                <h1 class="h3 mb-3 font-weight-normal">Link Shortener</h1>
+                <p class="h5 mb-5 font-weight-light">Please, enter your link in the box below:</p>
+            </div>
+
+            {% load crispy_forms_tags %}
+            {% for message in messages %}
+            <div class="alert alert-success col-lg-12 text-center mx-auto" role="alert">
+                <div class="{{ message.tags }}">{{ message }}</div>
+            </div>
+            {% endfor %}
+
+            {% crispy form %}
+
+            {% if short_link %}
+            <p class="h6 mt-5 mb-3 font-weight-normal">Your link:</p>
+            <p class="h6 mb-3 font-weight-normal">{{ short_link }}</p>
+            {% endif %}
+
+        </div>
+    </div>
+</main>
+{% endblock %}

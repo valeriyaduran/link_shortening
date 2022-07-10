@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Link Shortener</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+<header class="container mt-3">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <a class="navbar-brand mr-4" href="{% url 'home' %}">Link Shortener</a>
+            {% if request.user.is_authenticated %}
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav col-10">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="{% url 'mylinks' %}">My links</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav col-2 justify-content-end">
+                <li>
+                    <a href="{% url 'logout' %}" class="nav-link font-weight-bold">Logout</a>
+                </li>
+            </ul>
+            {% else %}
+            <ul class="navbar-nav col-10 justify-content-end">
+                <li>
+                    <a href="{% url 'login' %}" class="nav-link font-weight-bold">Login</a>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+    </nav>
+</header>
+<main class="container mt-3">
+    {% block content %}
+    {% endblock %}
+</main>
+
+</body>
+</html>
