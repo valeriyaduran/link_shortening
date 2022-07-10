@@ -43,4 +43,3 @@ class LinkForm(forms.ModelForm):
         self.helper.form_show_errors = True
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('shorten', 'Shorten'))
-
